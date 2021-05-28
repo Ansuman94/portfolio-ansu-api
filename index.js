@@ -74,7 +74,7 @@ runServer();
 const server = express();
 var whitelist = [
   "http://localhost:3005",
-  "https://portfolio-production-ui.herokuapp.com/"
+  "https://portfolio-production-ui.herokuapp.com"
 ];
 var corsOptions = {
   origin: function(origin, callback) {
