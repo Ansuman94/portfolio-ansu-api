@@ -72,8 +72,18 @@ async function runServer() {
 }
 runServer();
 const server = express();
+var whitelist = [
+  "http://localhost:3005",
+  "https://portfolio-production-ui.herokuapp.com/"
+];
 var corsOptions = {
-  origin: "http://localhost:3005",
+  origin: function(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: "GET, PUT",
   credentials: true
 };
